@@ -10,15 +10,15 @@
 void showPoly(double poly[]);
 void addPolys(double poly1[],double poly2[],double poly3[]);
 void subPolys(double poly1[],double poly2[],double poly3[]);
-void mutiPolys(double poly1[],double poly2[],double poly4[]);
+void multiPolys(double poly1[],double poly2[],double poly4[]);
 
 double max_double_value(double a,double b); 
 
 int main(void) {
     // 5x^4 + 4x^3 - 2x^2 + 7
-    double poly1[]={ 4.0 , 5.0 ,4.0 , 2.0 ,0.0 , 7,0 } ;
+    double poly1[]={ 4.0 , 5.0 , 4.0 ,-2.0 , 0.0 , 7,0 } ;
     // 3x^5 + 2x^4 + 4x^1 +2  
-    double poly2[]={ 5.0 , 3.0 ,2.0 , 0.0 ,0.0 , 4,0 , 2.0 } ;
+    double poly2[]={ 5.0 , 3.0 , 2.0 , 0.0 , 0.0 , 4.0 , 2.0 } ;
 
     //For evaluation poly
     // n + 2
@@ -44,11 +44,11 @@ int main(void) {
     printf("poly1 - poly2 = \n");
     showPoly(poly3);
 
-//     //Doing multipilation of polynomial 1 and polynomial 2
-//     subPolys(poly1,poly2,poly4);
-//     //show result;
-//     printf("poly1 * poly2 = \n");
-//     showPoly(poly4);
+    //Doing multipilation of polynomial 1 and polynomial 2
+    multiPolys(poly1,poly2,poly4);
+    //show result;
+    printf("poly1 * poly2 = \n");
+    showPoly(poly4);
 
     return 0;
 }
@@ -151,4 +151,26 @@ void subPolys(double poly1[],double poly2[],double poly3[]){
         }
     }
 }
+
+//-----------------------------------------------------
+
+/*polynomial 1 * polynomial 2*/
+
+void multiPolys(double poly1[],double poly2[],double poly4[]){
+    int i,j =0 ; //表示for迴圈的索引值 , 且分別冪次是多少
+    poly4[0]=poly1[0]+poly2[0];
+    
+    for(i=poly4[0] ; i >=0 ; i--){
+        poly4[(int)poly4[0]-i+1]=0.0;  
+        //把結果陣列全部填為0, 因為等等會做到累加的動作,所以先「初始化」
+    }
+    
+    for(i=poly1[0] ; i>=0 ; i--){
+        for(j=poly2[0] ; j >=0 ; j--){
+            poly4[(int)poly4[0]-(i+j)+1] += poly1[(int)poly1[0]-i+1]*poly2[(int)poly2[0]-j+1];  
+        }
+    }
+}
+
+//-----------------------------------------------------
 
