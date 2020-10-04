@@ -38,11 +38,11 @@ int main(void) {
     showPoly(poly3);
 
 
-//     //Doing substraction of polynomial 1 and polynomial 2
-//     subPolys(poly1,poly2,poly3);
-//     //show result;
-//     printf("poly1 - poly2 = \n");
-//     showPoly(poly3);
+    //Doing substraction of polynomial 1 and polynomial 2
+    subPolys(poly1,poly2,poly3);
+    //show result;
+    printf("poly1 - poly2 = \n");
+    showPoly(poly3);
 
 //     //Doing multipilation of polynomial 1 and polynomial 2
 //     subPolys(poly1,poly2,poly4);
@@ -128,7 +128,27 @@ void addPolys(double poly1[],double poly2[],double poly3[]){
             poly3[max_power-n+1]=0.0;
         }
     }
-   
-    
+}
+
+//-----------------------------------------------------
+
+/*polynomial 1 - polynomial 2*/
+
+void subPolys(double poly1[],double poly2[],double poly3[]){
+    int max_power = 0; //最大冪次數
+    int n = 0; //現在處理中的次項的冪次數
+    max_power = (int)max_double_value(poly1[0],poly2[0]); 
+    poly3[0] = max_power;
+    for( n = max_power ;n--){
+        if(poly1[0]>=n && poly2[0]>=n){
+            poly3[max_power-n+1]=poly1[(int)poly1[0]-n+1]-poly2[(int)poly2[0]-n+1];
+        }else if(poly1[0]>=n){
+            poly3[max_power-n+1] = poly1[(int)poly1[0]-n+1];
+        }else if(poly2[0]>=n){
+            poly3[max_power-n+1] = -poly2[(int)poly2[0]-n+1];
+        }else{
+            poly3[max_power-n+1] = 0.0;
+        }
+    }
 }
 
