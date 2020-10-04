@@ -139,7 +139,7 @@ void subPolys(double poly1[],double poly2[],double poly3[]){
     int n = 0; //現在處理中的次項的冪次數
     max_power = (int)max_double_value(poly1[0],poly2[0]); 
     poly3[0] = max_power;
-    for( n = max_power ;n--){
+    for( n = max_power ; n>=0 ; n--){
         if(poly1[0]>=n && poly2[0]>=n){
             poly3[max_power-n+1]=poly1[(int)poly1[0]-n+1]-poly2[(int)poly2[0]-n+1];
         }else if(poly1[0]>=n){
