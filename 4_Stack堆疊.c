@@ -13,7 +13,11 @@ Step 6. 編寫一個函式，實現isEmpty動作；
 */
 
 
-#include <stdio.h>
+#include <stdio.h>  //For printf()
+#include <stdlin.h> //For using random number
+#include <time.h>   //For seed of srand()
+
+
 
 int push(int n, double stack[] , double item , int *top));
 int push(int n, double stack[] , double item , int *top);
@@ -23,6 +27,7 @@ int isEmpty(int top);
 
 int main()
 {
+    int N=4; //堆疊大小為4
     
 
     return 0;
@@ -63,7 +68,7 @@ int topItem(int n,double stack[], double double *item ,int top){
 
 
 int isFull(int n,int top){
-    if(n-1<=top)  //(n<=top+1)
+    if(top>=n-1)  //(n<=top+1)
         return 1;  //ture
     else
         return 0;  //false 
